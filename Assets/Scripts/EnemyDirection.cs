@@ -9,7 +9,7 @@ public class EnemyDirection : MonoBehaviour {
     //public float zPos;
     // Use this for initialization
     void Start () {
-       // transform.position.Set(xPos,1,zPos);
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame

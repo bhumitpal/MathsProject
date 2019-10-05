@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +6,12 @@ public class shootMissile : MonoBehaviour {
 
     
     public Transform target;
+    Rigidbody2D missileRB;
     public float speed = 1.0f;
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-
+        missileRB = gameObject.GetComponent<Rigidbody2D>();
     }
     // Update is called once per frame
     void FixedUpdate () {
@@ -20,7 +21,8 @@ public class shootMissile : MonoBehaviour {
     void LookMoveTowards()
     {
         float step = speed * Time.deltaTime;
-
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        missileRB.gravityScale = 0;
+        missileRB.AddForce(Vector3.back*step, ForceMode2D.Force);
+        
     }
 }
